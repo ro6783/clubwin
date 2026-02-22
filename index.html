@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLUB WIN</title>
+  <meta name="description" content="CLUB WIN: Atención 24 hs, cargas 24/7 y respuesta inmediata. Escribinos por WhatsApp." />
+
+  <style>
+    :root{
+      --bg:#07060a;
+      --card:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.12);
+      --text:#f6f2ff;
+      --muted:#c8c0db;
+      --gold:#f7c84b;
+      --gold2:#ffea9b;
+      --green:#25D366;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius:18px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1100px 700px at 25% -10%, rgba(247,200,75,.18), transparent 60%),
+                  radial-gradient(900px 600px at 85% 10%, rgba(37,211,102,.12), transparent 65%),
+                  radial-gradient(900px 600px at 55% 115%, rgba(255,80,80,.10), transparent 60%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* Luces animadas del fondo */
+    .bg-lights::before,
+    .bg-lights::after{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      z-index:-1;
+      background:
+        radial-gradient(500px 500px at 20% 20%, rgba(247,200,75,.22), transparent 60%),
+        radial-gradient(520px 520px at 80% 25%, rgba(37,211,102,.16), transparent 60%),
+        radial-gradient(600px 600px at 55% 75%, rgba(255,80,120,.12), transparent 62%);
+      filter: blur(10px);
+      transform: translate3d(0,0,0);
+      animation: drift 10s ease-in-out infinite alternate;
+      opacity:.9;
+      pointer-events:none;
+    }
+    .bg-lights::after{
+      animation-duration: 13s;
+      opacity:.65;
+      filter: blur(18px);
+    }
+    @keyframes drift{
+      0%{ transform: translate(-2%, -1%) scale(1.02); }
+      50%{ transform: translate(2%, 1%) scale(1.06); }
+      100%{ transform: translate(0%, 3%) scale(1.03); }
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(7,6,10,.85), rgba(7,6,10,.35));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .brand img{
+      width:54px; height:54px; object-fit:contain;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.65));
+      animation: float 3.2s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-3px); }
+    }
+    .brand .t{
+      display:flex; flex-direction:column; line-height:1.05;
+    }
+    .brand .t small{
+      color:var(--gold2);
+      font-weight:900;
+      letter-spacing:.8px;
+    }
+    .brand .t strong{
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .mini{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--gold2);
+      font-weight:900;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:13px 16px;
+      border-radius:16px;
+      border:1px solid rgba(247,200,75,.40);
+      background: linear-gradient(180deg, rgba(247,200,75,.28), rgba(247,200,75,.08));
+      color:var(--text);
+      font-weight:1000;
+      letter-spacing:.2px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      transition: transform .12s ease, filter .12s ease, border-color .12s ease;
+      text-decoration:none;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.05); border-color: rgba(247,200,75,.75); }
+
+    /* Brillo animado del botón */
+    .btn::after{
+      content:"";
+      position:absolute;
+      top:-40%;
+      left:-120%;
+      width:60%;
+      height:180%;
+      transform: rotate(22deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      animation: shine 2.7s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%{ left:-120%; }
+      60%{ left:140%; }
+      100%{ left:140%; }
+    }
+
+    main{ padding:56px 0 28px; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 260px at 30% 0%, rgba(247,200,75,.16), transparent 60%),
+        radial-gradient(650px 320px at 90% 20%, rgba(37,211,102,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .inner{ position:relative; padding:26px; }
+
+    /* Animación de entrada */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      animation: appear .8s ease forwards;
+    }
+    .d1{ animation-delay: .05s; }
+    .d2{ animation-delay: .15s; }
+    .d3{ animation-delay: .25s; }
+    .d4{ animation-delay: .35s; }
+    @keyframes appear{
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      color:var(--gold2);
+      font-weight:1000;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:46px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+      position:relative;
+    }
+    @media (max-width: 520px){ h1{ font-size:36px; } }
+
+    /* Shine en título */
+    .shine{
+      background: linear-gradient(90deg, var(--gold2), #fff, var(--gold2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      background-size: 200% 100%;
+      animation: textshine 3.2s ease-in-out infinite;
+    }
+    @keyframes textshine{
+      0%{ background-position: 0% 50%; }
+      50%{ background-position: 100% 50%; }
+      100%{ background-position: 0% 50%; }
+    }
+
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 60ch;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:16px 0 18px;
+    }
+    .badge{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      font-weight:950;
+      font-size:13px;
+    }
+    .badge b{ color:var(--gold2); }
+
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:14px;
+    }
+
+    .logoBox{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 280px;
+    }
+    .logoBig{
+      width:min(390px, 92%);
+      height:auto;
+      object-fit:contain;
+      filter: drop-shadow(0 22px 50px rgba(0,0,0,.75));
+      animation: glow 2.6s ease-in-out infinite;
+    }
+    @keyframes glow{
+      0%,100%{ filter: drop-shadow(0 22px 50px rgba(0,0,0,.75)) brightness(1); }
+      50%{ filter: drop-shadow(0 26px 70px rgba(247,200,75,.18)) brightness(1.06); }
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius: 16px;
+      padding:16px;
+      transition: transform .14s ease, border-color .14s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(247,200,75,.35);
+    }
+    .card .t{
+      font-weight:1000;
+      margin:0 0 6px;
+    }
+    .card .p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    footer{
+      margin-top:26px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:18px 0 34px;
+      color:rgba(255,255,255,.65);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* WhatsApp flotante */
+    .wa{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .waLabel{
+      display:none;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+      color:var(--text);
+      font-weight:1000;
+      font-size:13px;
+      box-shadow: var(--shadow);
+      white-space:nowrap;
+    }
+    @media (min-width: 820px){
+      .waLabel{ display:inline-flex; }
+    }
+    .waBtn{
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      border:1px solid rgba(37,211,102,.65);
+      background: radial-gradient(circle at 30% 20%, rgba(37,211,102,.65), rgba(37,211,102,.18));
+      display:grid;
+      place-items:center;
+      box-shadow: 0 22px 65px rgba(0,0,0,.6);
+      text-decoration:none;
+      animation: pulse 1.6s ease-in-out infinite;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .waBtn:hover{ transform: translateY(-2px); filter: brightness(1.08); }
+    @keyframes pulse{
+      0%,100%{ box-shadow: 0 22px 65px rgba(0,0,0,.6), 0 0 0 0 rgba(37,211,102,.25); }
+      50%{ box-shadow: 0 22px 65px rgba(0,0,0,.6), 0 0 0 12px rgba(37,211,102,0); }
+    }
+    .waBtn svg{ width:30px; height:30px; }
+  </style>
+</head>
+
+<body class="bg-lights">
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="#">
+          <img src="clubwin.png" alt="Logo CLUB WIN">
+          <div class="t">
+            <small>PLATAFORMA</small>
+            <strong>CLUB WIN</strong>
+          </div>
+        </a>
+        <div class="mini">
+          <div class="pill">Atención <b>24 HS</b></div>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://wa.me/5491128339644?text=Hola%20CLUB%20WIN!%20Quiero%20info%20para%20empezar%20a%20jugar.">
+            Escribinos →
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="panel">
+          <div class="inner">
+            <div class="kicker reveal d1">★ CLUB WIN • Jugá hoy</div>
+
+            <h1 class="reveal d2">
+              <span class="shine">Atención 24 hs</span> y <span class="shine">cargas 24/7</span> con respuesta inmediata.
+            </h1>
+
+            <p class="lead reveal d3">
+              Entrá a nuestra plataforma y empezá a jugar. Para recibir el acceso, promociones o ayuda para cargar,
+              escribinos directo por WhatsApp.
+            </p>
+
+            <div class="badges reveal d4">
+              <div class="badge">✅ <b>Respuesta inmediata</b></div>
+              <div class="badge">⚡ <b>Carga de fichas 24/7</b></div>
+              <div class="badge">🕒 <b>Atención las 24 hs</b></div>
+            </div>
+
+            <div class="actions reveal d4">
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://wa.me/5491128339644?text=Hola%20CLUB%20WIN!%20Quiero%20empezar%20a%20jugar%20hoy.">
+                EMPEZÁ A JUGAR →
+              </a>
+            </div>
+
+            <div class="sub reveal d4">WhatsApp: +54 9 11 2833 9644</div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="inner logoBox">
+            <img class="logoBig" src="clubwin.png" alt="CLUB WIN">
+          </div>
+        </aside>
+      </section>
+
+      <section style="margin-top:18px;">
+        <div class="grid">
+          <article class="card reveal d2">
+            <p class="t">🎰 Mejores plataformas</p>
+            <p class="p">Experiencia fluida, rápida y simple desde el celular.</p>
+          </article>
+          <article class="card reveal d3">
+            <p class="t">🎁 Bonos y promos</p>
+            <p class="p">Consultá por promociones vigentes y beneficios.</p>
+          </article>
+          <article class="card reveal d4">
+            <p class="t">⚡ Soporte al instante</p>
+            <p class="p">Te guiamos para ingresar, cargar y resolver dudas.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <b>CLUB WIN</b> — Plataforma de entretenimiento. Jugá de forma responsable. Si sos menor, no accedas.
+      </footer>
+    </div>
+  </main>
+
+  <!-- WhatsApp flotante -->
+  <div class="wa" aria-label="Contactar por WhatsApp">
+    <div class="waLabel">Escribinos por WhatsApp</div>
+    <a class="waBtn" target="_blank" rel="noopener"
+       href="https://wa.me/5491128339644?text=Hola%20CLUB%20WIN!%20Quiero%20info%20para%20empezar.">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path fill="white" d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.44-.14-.63.14-.18.27-.72.88-.88 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.41-2.15-1.32-.79-.7-1.33-1.57-1.48-1.84-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.86-2.08-.23-.55-.47-.48-.63-.49-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.66.28 1.17.45 1.57.57.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.83-1.27.23-.62.23-1.15.16-1.27-.07-.12-.25-.2-.52-.34Z"/>
+        <path fill="white" d="M26.7 5.3A13.38 13.38 0 0 0 16.02 1C8.66 1 2.68 6.98 2.68 14.34c0 2.35.61 4.64 1.77 6.66L2.5 31l10.2-1.9a13.3 13.3 0 0 0 6.32 1.6h.01c7.36 0 13.34-5.98 13.34-13.34 0-3.56-1.39-6.91-3.67-9.06Zm-7.68 22.1h-.01c-2.02 0-4-.54-5.73-1.55l-.41-.24-6.05 1.12 1.15-5.9-.27-.43a11.35 11.35 0 0 1-1.76-6.07C5.94 8.2 10.2 3.94 16.03 3.94c3.03 0 5.88 1.18 8.02 3.32a11.26 11.26 0 0 1 3.32 8.02c0 6.22-5.15 11.42-11.35 12.12Z"/>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>
